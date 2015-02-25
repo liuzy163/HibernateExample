@@ -1,5 +1,7 @@
 package ca.zl.domain;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,4 +46,25 @@ public class Computer {
     this.model = model;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    }
+
+    if (!(o instanceof Computer)) {
+      return false;
+    }
+
+    Computer that = (Computer) o;
+
+    return Objects.equals(this.id, that.id) && Objects.equals(this.maker, that.maker)
+        && Objects.equals(this.model, that.model);
+
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, maker, model);
+  }
 }

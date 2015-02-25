@@ -5,7 +5,7 @@
 <hibernate-configuration>
  <session-factory>
  
-    <property name="connection.url">jdbc:hsqldb:mem:playground</property>
+    <property name="connection.url">jdbc:hsqldb:mem:playground;shutdown=true</property>
     <property name="connection.username">sa</property>
     <property name="connection.password"></property>
     <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
