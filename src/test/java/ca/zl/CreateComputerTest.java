@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -31,7 +30,7 @@ public class CreateComputerTest {
     Computer c4 = populateComputer("HP", "H586");
     session.save(c4);
     sessionFactoryRule.commit();
-    
+
     @SuppressWarnings("unchecked")
     List<Computer> computers = session.createCriteria(Computer.class).list();
 

@@ -5,7 +5,7 @@
 <hibernate-configuration>
  <session-factory>
  
-    <property name="connection.url">jdbc:hsqldb:mem:playground;shutdown=true</property>
+    <property name="connection.url">jdbc:hsqldb:file:db/playground;shutdown=true;hsqldb.write_delay=false</property>
     <property name="connection.username">sa</property>
     <property name="connection.password"></property>
     <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
@@ -15,11 +15,10 @@
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     <!-- Drop DB schema on SessionFactory closing. Be careful with production system -->
-    <property name="hbm2ddl.auto">create-drop</property>
+    <property name="hbm2ddl.auto">update</property>
  
     <!-- Use hibernate default pooling, you may want to replace it with more efficient one for production -->
     <property name="connection.pool_size">1</property>
-    <property name="current_session_context_class">thread</property>
 
     <mapping class="ca.zl.domain.Computer" />
 
