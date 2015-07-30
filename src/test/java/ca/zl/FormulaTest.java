@@ -23,6 +23,17 @@ public class FormulaTest {
   }
 
   @Test
+  public void afterSaveRefresh() {
+    Session session = sessionFactoryRule.getSession();
+    Employee e1 = populateEmployee("John", "Smith");
+    session.save(e1);
+    session.refresh(e1);
+    Employee employee = (Employee) session.load(Employee.class, e1.getId());
+    assertEquals("Smith", employee.getLastName());
+    assertEquals("John Smith", employee.getFullName());
+  }
+
+  @Test
   public void afterSaveFlush() {
     Session session = sessionFactoryRule.getSession();
     Employee e1 = populateEmployee("John", "Smith");
@@ -45,15 +56,17 @@ public class FormulaTest {
   }
 
   @Test
-  public void afterSaveRefresh() {
+  public void afterSaveFlushRefresh() {
     Session session = sessionFactoryRule.getSession();
     Employee e1 = populateEmployee("John", "Smith");
     session.save(e1);
+    session.flush();
     session.refresh(e1);
     Employee employee = (Employee) session.load(Employee.class, e1.getId());
     assertEquals("Smith", employee.getLastName());
     assertEquals("John Smith", employee.getFullName());
   }
+
 
   @Test
   public void afterSaveRefreshUpdate() {
