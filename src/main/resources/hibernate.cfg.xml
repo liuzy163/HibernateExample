@@ -21,6 +21,7 @@
     <property name="connection.pool_size">1</property>
 
     <mapping class="ca.zl.domain.Computer" />
+    <mapping class="ca.zl.domain.Employee" />
 
 </session-factory>
 </hibernate-configuration>

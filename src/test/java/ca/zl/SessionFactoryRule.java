@@ -11,6 +11,7 @@ import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;
 
 import ca.zl.domain.Computer;
+import ca.zl.domain.Employee;
 
 public class SessionFactoryRule implements MethodRule {
 
@@ -58,6 +59,7 @@ public class SessionFactoryRule implements MethodRule {
     configuration.setProperty("show_sql", "true");
     configuration.setProperty("format_sql", "true");
     configuration.addAnnotatedClass(Computer.class);
+    configuration.addAnnotatedClass(Employee.class);
 
     StandardServiceRegistryBuilder builder =
         new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
